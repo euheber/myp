@@ -11,7 +11,7 @@ export default {
       'lora': [ 'Lora', 'serif'],
     },
     colors: { 
-      'e9c46a': '#e9c46a',
+      'f2c94d': '#eca531',
       '2A9D8F': '#2A9D8F',
       'F4A261': '#F4A261',
       'E76F51': '#E76F51',

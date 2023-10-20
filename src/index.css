@@ -4,14 +4,17 @@
 
 
 body{
-  background-color: #e0e0e0
+  background-color: #E29513;
+  padding-block: 15px;
 }
 
 #root{
 max-width: 1154px;
 margin-inline: auto;
-background-color: #f3c55c;
 height: 100vh;
+padding-inline: 20px;
+background-color: white;
+border-radius: 10px;
 }
 
 *{ 

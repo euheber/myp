@@ -1,9 +1,9 @@
 function Header(){
     return (
         <>
-            <header className=" px-5">
-                <div className="flex justify-between py-2">
-                <a href="/" className="uppercase text-1d1e20">myp</a>
+            <header className="border-b-2 border-b-1d1e20 rounded-sm">
+                <div className="flex justify-between items-center py-2">
+                <a href="/" className="uppercase text-1d1e20 text-2xl">my<span className="text-f2c94d">p</span></a>
                 <nav>
                     <ul className="flex gap-5">
                         <li>
@@ -13,15 +13,10 @@ function Header(){
                            <a href="/"> Cadastre-se</a>
                          </li>
                          <li>
-                            <a href="/">Blog</a>
+                            <a href="/">Saiba mais</a>
                          </li>
                     </ul>
                 </nav>
-                </div>
-                <div className="max-w-lg ml-auto mt-10">
-                    <p className="font-lora text-right font-bold">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus architecto distinctio culpa consequatur quisquam accusantium beatae voluptate voluptatum, perferendis amet. Consequuntur veniam omnis fugit atque quaerat nemo vitae sint ad.
-                    </p>
                 </div>
             </header>
         </>
