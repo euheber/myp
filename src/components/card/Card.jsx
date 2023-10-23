@@ -1,11 +1,18 @@
-function Card({classStyle, content}) {
+function Card() {
   return (
-    <div className={`p-2 rounded-xl ${classStyle}`} >
-      <h1 className="text-2xl text-center mb-5">{content.title}</h1>
+    <div className="w-80 h-96 rounded-md p-2 border border-black">
 
-      <p>
-      {content.content}
-      </p>
+      <div className="h-[182px] rounded-md">
+        
+      </div>
+
+      <div className="h-[182px] ">
+        <div className="flex justify-between items-center px-4 pt-1">
+          <h1 className="font-bold">Dentinhos</h1> <span className="material-symbols-outlined text-f2c94d">female</span>
+        </div>
+
+      </div>
+
     </div>
   )
 }

@@ -11,8 +11,9 @@ body{
 #root{
 max-width: 1154px;
 margin-inline: auto;
-height: 100vh;
+height: 100%;
 padding-inline: 20px;
+padding-bottom: 15px;
 background-color: white;
 border-radius: 10px;
 }
@@ -25,5 +26,9 @@ border-radius: 10px;
   box-sizing: border-box;
   font-family: 'Montserrat', sans-serif;
   font-weight: 500;
+}
+
+p{ 
+  font-family: 'Lora', serif;
 }
 
