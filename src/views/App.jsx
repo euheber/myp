@@ -35,8 +35,9 @@ function App() {
         </div>
 
 
-        <section className="w-full mt-10">
-      <Card />
+        <section className="w-full mt-10 flex items-center justify-center gap-2">
+         <Card />
+         <Card />
         </section>
       </main>
     </>

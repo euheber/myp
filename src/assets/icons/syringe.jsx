@@ -4,5 +4,4 @@ function syringe(){
     )
 }
 
-
 export default syringe
