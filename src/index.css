@@ -9,7 +9,7 @@ body{
 }
 
 #root{
-max-width: 1154px;
+max-width: 768px;
 margin-inline: auto;
 height: 100%;
 padding-inline: 20px;

@@ -1,5 +1,5 @@
 import HeroImage from "../../public/images/bannerHero"
-import Card from "../components/card/Card"
+import ArrowDown from "../assets/icons/arrowdown.jsx"
 
 function App() {
   return (
@@ -26,19 +26,11 @@ function App() {
 
       <main className="mt-10">
         <h1 className="text-7xl font-bold uppercase text-center tracking-widest text-1d1e20">meet your pawtner</h1>
-        <div className="text-center mt-5">
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, veritatis ab quae iusto voluptatum eum eaque architecto inventore illo! Corporis, unde! Aut soluta magni quos? Commodi labore quasi dolore cumque?
+        <p className="text-center mt-5">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo illum sit corporis pariatur? Voluptas, autem facilis, beatae fugit fugiat ipsum nemo possimus nihil expedita, libero dolor fuga eveniet blanditiis cum.
         </p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat, ipsa enim ad perferendis dicta, maxime nihil cumque laborum, dolorem dolore voluptatum reprehenderit? Asperiores illo, iusto impedit aut doloremque ad pariatur.
-        </p>
-        </div>
 
-
-        <section className="w-full mt-10 flex items-center justify-center gap-2">
-         <Card />
-         <Card />
-        </section>
+        <ArrowDown classes={'mx-auto mt-10'}/>
       </main>
     </>
   )
