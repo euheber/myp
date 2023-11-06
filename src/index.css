@@ -12,10 +12,8 @@ body{
 max-width: 768px;
 margin-inline: auto;
 height: 100%;
-/* padding-inline: 20px; */
-padding-bottom: 15px;
 background-color: white;
-border-radius: 10px;
+border-radius: 10px ;
 }
 
 *{ 

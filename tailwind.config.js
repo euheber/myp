@@ -14,8 +14,9 @@ export default {
       'freesia': '#FEC84D',
       'black': '#1d1e20',
       'white': '#ffffff',
+      'grey': '#eceae6',
       'blue': '#4D76F2',
-      'blue-green': '#00B1B0',
+      'blue-green':'#00B1B0'
     }
   },
   plugins: [],
