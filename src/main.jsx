@@ -1,15 +1,13 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import router from './routes/routes'
-import Header from "./components/headerComponent/Header"
-import Footer from "./components/footerComponent/Footer"
-import { RouterProvider } from 'react-router-dom'
-import './index.css'
+import React from "react"
+import ReactDOM from "react-dom/client"
+import App from "./App"
+import "./index.css"
+import { BrowserRouter as Router } from "react-router-dom"
 
-ReactDOM.createRoot(document.getElementById('root')).render(
+ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <Header />
-    <RouterProvider router={router} />
-    <Footer />
-  </React.StrictMode>,
+    <Router>
+      <App />
+    </Router>
+  </React.StrictMode>
 )

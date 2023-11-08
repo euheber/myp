@@ -1,9 +1,8 @@
-import ArrowDown from "../assets/icons/arrowdown.jsx"
-
-function App() {
-  return (
-    <>
-      <section className=" mx-auto max-w-4xl mt-10 min-h-[400px] flex items-center px-5">
+import ArrowDown from "../assets/icons/arrowdown"
+function root(){ 
+    return (
+        <>
+         <section className=" mx-auto max-w-4xl mt-10 min-h-[400px] flex items-center px-5">
         <div className=" max-w-xl">
           <h1 className="text-3xl">
             Seu parceiro pode estar aqui
@@ -48,9 +47,9 @@ function App() {
         </div>
 
         <a href="/" className="hover:text-freesia transtion duration-150 ml-[670px]">Veja mais</a>
-      </section>
-    </>
-  )
+      </section></>
+    )
 }
 
-export default App
+
+export default root
