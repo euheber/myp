@@ -1,4 +1,14 @@
+import { useState } from "react"
+import InputField from "../components/Inputs/InputsField"
+import OptionsField from "../components/Inputs/OptionField"
+
 function register() {
+  const [meuValor, setMeuValor] = useState("")
+
+  const handleMeuValorChange = (novoValor) => {
+    setMeuValor(novoValor)
+  }
+
   return (
     <main className="mt-10 px-5 pb-2">
       <h1 className="font-lorat text-xl">
@@ -9,89 +19,63 @@ function register() {
         <details className="border space-y-5">
           <summary className="cursor-pointer">Sobre a ong</summary>
 
-          <div>
-            <label htmlFor="ongname" className="mr-3">
-              Nome da organização:
-            </label>
-            <input type="text" id="ongname" className="border" />
-          </div>
+          <InputField
+            onInputChange={handleMeuValorChange}
+            type="text"
+            identity={"ongname"}
+            label={"Nome da Organização"}
+          />
 
-          <div>
-            <label className="mr-3">Estado:</label>
+          <InputField
+            onInputChange={handleMeuValorChange}
+            type="text"
+            identity={"street"}
+            label={"Rua"}
+          />
+          <InputField
+            onInputChange={handleMeuValorChange}
+            type="text"
+            identity={"number"}
+            label={"Número"}
+          />
+
+          <div className="flex gap-4">
+            <label>Estado/Cidade</label>
             <select>
-              <option value="sp">São Paulo</option>
+              <OptionsField value={"sp"} content={"São paulo"} />
             </select>
-          </div>
 
-          <div>
-            <label className="mr-3">Cidade:</label>
             <select>
-              <option value="cosmópolis">Cosmópolis</option>
+              <OptionsField value={"cosmopolis"} content={"Cosmópolis"} />
             </select>
-          </div>
-
-          <div>
-            <label htmlFor="street" className="mr-3">
-              Rua:
-            </label>
-            <input type="text" id="street" className="border" />
-          </div>
-
-          <div>
-            <label htmlFor="street" className="mr-3">
-              Número:
-            </label>
-            <input type="text" id="number" className="border" />
-          </div>
-
-          <div className="flex flex-col">
-            <label htmlFor="details" className="mr-3">
-              Um pouco sobre a ong
-            </label>
-            <textarea
-              name="details"
-              id="details"
-              cols="30"
-              rows="10"
-              className="border border-black rounded-md"
-            ></textarea>
           </div>
         </details>
 
-        <details className="space-y-5">
+        <details>
           <summary className="cursor-pointer">Responsável</summary>
 
-          <div>
-            <label htmlFor="name" className="mr-3">
-              Nome
-            </label>
-            <input type="text" id="name" className="border" />
-          </div>
-
-          <div>
-            <label htmlFor="email" className="mr-3">
-              Email
-            </label>
-            <input type="text" id="email" className="border" />
-          </div>
-
-          <div>
-            <label htmlFor="password" className="mr-3">
-              Senha
-            </label>
-            <input type="text" id="email" className="border" />
-          </div>
-
-          <div className="flex flex-col gap-2">
-            <label htmlFor="profilepicture">Foto de perfil</label>
-            <input type="file" name="" id="" />
-          </div>
+          <InputField
+            onInputChange={handleMeuValorChange}
+            type={"text"}
+            identity={"name"}
+            label={"Nome"}
+          />
+          <InputField
+            onInputChange={handleMeuValorChange}
+            type={"text"}
+            identity={"email"}
+            label={"Email"}
+          />
+          <InputField
+            onInputChange={handleMeuValorChange}
+            type={"text"}
+            identity={"password"}
+            label={"Senha"}
+          />
         </details>
 
 
-        <button className="border border-black hover:text-freesia duration-150 transition w-56 mx-auto rounded-md p-2">
-            Cadastrar
-        </button>
+        <button className="border border-black p-4 w-40 rounded-md mx-auto cursor-pointer hover:text-freesia transition duration-150" >Cadastrar</button>
       </form>
     </main>
   )
