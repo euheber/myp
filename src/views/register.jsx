@@ -1,12 +1,20 @@
 import { useState } from "react"
 import InputField from "../components/Inputs/InputsField"
-import OptionsField from "../components/Inputs/OptionField"
+import OptionField from "../components/Inputs/OptionField"
 
 function register() {
-  const [meuValor, setMeuValor] = useState("")
+  const [meuValor, setMeuValor] = useState({ 
+    ongname: '',
+    neighborhood: '', 
+    street: '',
+    number: '',
+  })
 
-  const handleMeuValorChange = (novoValor) => {
-    setMeuValor(novoValor)
+  const handleMeuValorChange = (event) => {
+    setMeuValor({ 
+      ...meuValor,
+      [event.target.name]: event.target.value
+    })
   }
 
   return (
@@ -14,7 +22,7 @@ function register() {
       <h1 className="font-lorat text-xl">
         Cadastre a ONG para ter acesso a nossas ferramentas
       </h1>
-
+      {meuValor.ongname}
       <form className="mt-10 flex flex-col gap-5">
         <details className="border space-y-5">
           <summary className="cursor-pointer">Sobre a ong</summary>
@@ -24,6 +32,7 @@ function register() {
             type="text"
             identity={"ongname"}
             label={"Nome da Organização"}
+            name={'ongname'}
           />
 
           <InputField
@@ -31,22 +40,34 @@ function register() {
             type="text"
             identity={"street"}
             label={"Rua"}
+            name={'street'}
           />
+
+          <InputField
+            onInputChange={handleMeuValorChange}
+            type="text"
+            identity={"bairro"}
+            label={"Bairro"}
+            name={'neighborhood'}
+          />
+
+
           <InputField
             onInputChange={handleMeuValorChange}
             type="text"
             identity={"number"}
             label={"Número"}
+            name={'number'}
           />
 
           <div className="flex gap-4">
             <label>Estado/Cidade</label>
             <select>
-              <OptionsField value={"sp"} content={"São paulo"} />
+              <OptionField value={"sp"} content={"São paulo"} />
             </select>
 
             <select>
-              <OptionsField value={"cosmopolis"} content={"Cosmópolis"} />
+              <OptionField value={"cosmopolis"} content={"Cosmópolis"} />
             </select>
           </div>
         </details>
@@ -59,18 +80,21 @@ function register() {
             type={"text"}
             identity={"name"}
             label={"Nome"}
+            name={"name"}
           />
           <InputField
             onInputChange={handleMeuValorChange}
             type={"text"}
             identity={"email"}
             label={"Email"}
+            name={"email"}
           />
           <InputField
             onInputChange={handleMeuValorChange}
             type={"text"}
             identity={"password"}
             label={"Senha"}
+            name={"password"}
           />
         </details>
 
