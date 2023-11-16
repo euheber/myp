@@ -1,32 +1,38 @@
 import { useState } from "react"
-import InputField from "../components/Inputs/InputsField"
-import OptionField from "../components/Inputs/OptionField"
+import InputField from "../components/Inputs/InputField"
+import SelectField from "../components/Inputs/SelectField"
 
 function register() {
-  const [meuValor, setMeuValor] = useState({ 
+  const [user, setUser] = useState({ 
     ongname: '',
     neighborhood: '', 
     street: '',
     number: '',
+    name: '',
+    email: '',
+    password: '',
+    state: '',
   })
 
   const handleMeuValorChange = (event) => {
-    setMeuValor({ 
-      ...meuValor,
+    console.log(event.target.name);
+    setUser({ 
+      ...user,
       [event.target.name]: event.target.value
     })
   }
 
   return (
     <main className="mt-10 px-5 pb-2">
+        {user.state}
       <h1 className="font-lorat text-xl">
         Cadastre a ONG para ter acesso a nossas ferramentas
       </h1>
-      {meuValor.ongname}
+
       <form className="mt-10 flex flex-col gap-5">
         <details className="border space-y-5">
           <summary className="cursor-pointer">Sobre a ong</summary>
-
+      {}
           <InputField
             onInputChange={handleMeuValorChange}
             type="text"
@@ -62,13 +68,7 @@ function register() {
 
           <div className="flex gap-4">
             <label>Estado/Cidade</label>
-            <select>
-              <OptionField value={"sp"} content={"São paulo"} />
-            </select>
-
-            <select>
-              <OptionField value={"cosmopolis"} content={"Cosmópolis"} />
-            </select>
+            < SelectField onSelectChange={handleMeuValorChange} value={'sp'} name={"state"} content={"São Paulo"}/>
           </div>
         </details>
 
