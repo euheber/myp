@@ -1,19 +1,42 @@
 import { useState } from "react"
+import validator from "validator"
 
-function input({onInputChange, identity, type, label, name}) {
+function input({ onInputChange, identity, type, label, name, example }) {
+  const [isValid, setEmail] = useState(true)
 
-    const handleChange = (event) => { 
-        onInputChange(event)
+  const handleChange = (event) => {
+    if (event.target.name == "email") {
+      const isEmail = validator.isEmail(event.target.value)
+      setEmail(isEmail)
     }
+    onInputChange(event)
+  }
+
   return (
-    <div>
-      <label htmlFor={identity} className="mr-3 block">
-       {label}
+    <div className="mt-2">
+      <label htmlFor={identity} className="block">
+        {label}
       </label>
-      <input className="border border-black p-2 w-full rounded-md mt-2 mb-2" type={type} id={identity} onChange={handleChange} name={name}/>
+      <input
+        className="border border-black p-2 w-full rounded-md mt-1"
+        type={type}
+        id={identity}
+        onChange={handleChange}
+        name={name}
+        required
+        placeholder={example}
+      />
+
+{name === 'email' ? (
+  isValid ? (
+    <p></p>
+  ) : (
+    <p>Preencha com um email válido</p>
+  )
+) : null}
+
     </div>
   )
 }
-
 
 export default input
