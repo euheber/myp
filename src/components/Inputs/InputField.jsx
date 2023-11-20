@@ -1,16 +1,16 @@
-import { useState } from "react"
-import validator from "validator"
+import React, { useState, forwardRef } from 'react';
+import validator from 'validator';
 
-function input({ onInputChange, identity, type, label, name, example }) {
-  const [isValid, setEmail] = useState(true)
+const Input = forwardRef(({ onInputChange, identity, type, label, name, example}, ref) => {
+  const [isValid, setEmail] = useState(true);
 
   const handleChange = (event) => {
-    if (event.target.name == "email") {
-      const isEmail = validator.isEmail(event.target.value)
-      setEmail(isEmail)
+    if (event.target.name === 'email') {
+      const isEmail = validator.isEmail(event.target.value);
+      setEmail(isEmail);
     }
-    onInputChange(event)
-  }
+    onInputChange(event);
+  };
 
   return (
     <div className="mt-2">
@@ -23,20 +23,20 @@ function input({ onInputChange, identity, type, label, name, example }) {
         id={identity}
         onChange={handleChange}
         name={name}
-        required
         placeholder={example}
-      />
+        ref={ref}
+        required
+        />
 
-{name === 'email' ? (
-  isValid ? (
-    <p></p>
-  ) : (
-    <p>Preencha com um email válido</p>
-  )
-) : null}
-
+      {name === 'email' ? (
+        isValid ? (
+          <p></p>
+        ) : (
+          <p>Preencha com um email válido</p>
+        )
+      ) : null}
     </div>
-  )
-}
+  );
+});
 
-export default input
+export default Input;

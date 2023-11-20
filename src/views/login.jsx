@@ -1,7 +1,15 @@
+import InputField from "../components/Inputs/InputField"
+
 function login(){ 
     return (
         <>
-            <h1>Página de login</h1>
+            <main>
+                <h1>Faça login</h1>
+
+                <form action="">
+                       <InputField /> 
+                </form>
+            </main>
         </>
     )
 }

@@ -1,9 +1,10 @@
-import { useState } from "react"
+import { useState, useRef } from "react"
 import InputField from "../components/Inputs/InputField"
 import OptionField from "../components/Inputs/OptionField"
 
 
 function register() {
+  const inputRef = useRef(null)
   const [user, setUser] = useState({
     ongname: "",
     neighborhood: "",
@@ -14,8 +15,10 @@ function register() {
     password: "",
     state: "",
   })
-const [validEmail, setEmail] = useState('')
-  const handleMeuValorChange = (event, objectId) => {
+
+  const [validEmail, setEmail] = useState('')
+
+  const handleInputChange = (event, objectId) => {
 
     if(objectId){
       setUser({
@@ -34,19 +37,20 @@ const [validEmail, setEmail] = useState('')
 
   const registerUser = async (event) => { 
     event.preventDefault()
-    try{ 
-     const request = await fetch("http://localhost:3000/user", {
-        method: 'POST',
-        headers: { 
-          'Content-type': 'application/json'
-        },
-        body: JSON.stringify(user)
-      })
-  
-      console.log(request.status)
-     }catch(e){ 
-        console.log(e)
-     }   
+ 
+        const request = await fetch("http://localhost:3000/user", {
+          method: 'POST',
+          headers: { 
+            'Content-type': 'application/json'
+          },
+          body: JSON.stringify(user)
+        })
+       
+        if(!request.ok){
+          const errorMsg = await request.json()
+          console.log(request);
+          console.log(errorMsg.error);
+        }
   }
 
   return (
@@ -58,11 +62,8 @@ const [validEmail, setEmail] = useState('')
       <form className="mt-10 flex flex-col gap-5">
         <details className="border space-y-5">
           <summary className="cursor-pointer">Sobre a ong</summary>
-            {user.name}
-            {user.password}
-            {user.number}
           <InputField
-            onInputChange={handleMeuValorChange}
+            onInputChange={handleInputChange}
             type="text"
             identity={"ongname"}
             label={"Nome da Organização"}
@@ -71,7 +72,7 @@ const [validEmail, setEmail] = useState('')
           /> 
 
           <InputField
-            onInputChange={handleMeuValorChange}
+            onInputChange={handleInputChange}
             type="text"
             identity={"street"}
             label={"Rua"}
@@ -80,7 +81,7 @@ const [validEmail, setEmail] = useState('')
           />
 
           <InputField
-            onInputChange={handleMeuValorChange}
+            onInputChange={handleInputChange}
             type="text"
             identity={"bairro"}
             label={"Bairro"}
@@ -89,7 +90,7 @@ const [validEmail, setEmail] = useState('')
           />
 
           <InputField
-            onInputChange={handleMeuValorChange}
+            onInputChange={handleInputChange}
             type="text"
             identity={"number"}
             label={"Número"}
@@ -99,7 +100,7 @@ const [validEmail, setEmail] = useState('')
 
           <div className="flex gap-4">
             <label>Estado/Cidade</label>
-            <select onChange={(event => {handleMeuValorChange(event, 'state') })}>
+            <select onChange={(event => handleInputChange(event, 'state') )}>
       
             < OptionField defaultInfo={'sp'} content={"Selecione"} />
             < OptionField value={'sp'} content={"São Paulo"} />
@@ -112,7 +113,7 @@ const [validEmail, setEmail] = useState('')
           <summary className="cursor-pointer">Responsável</summary>
 
           <InputField
-            onInputChange={handleMeuValorChange}
+            onInputChange={handleInputChange}
             type={"text"}
             identity={"name"}
             label={"Nome"}
@@ -120,7 +121,7 @@ const [validEmail, setEmail] = useState('')
             example={'Nome do responsável'}
           />
           <InputField
-            onInputChange={handleMeuValorChange}
+            onInputChange={handleInputChange}
             type={"text"}
             identity={"cellphone"}
             label={"Telefone"}
@@ -128,16 +129,17 @@ const [validEmail, setEmail] = useState('')
             example={'Telefone para contato'}
           />
           <InputField
-            onInputChange={handleMeuValorChange}
+            onInputChange={handleInputChange}
             type={"text"}
             identity={"email"}
             label={"Email"}
             name={"email"}
             example={"meuemail@email.com"}
+            ref={inputRef}
           />
           
           <InputField
-            onInputChange={handleMeuValorChange}
+            onInputChange={handleInputChange}
             type={"text"}
             identity={"password"}
             label={"Senha"}
