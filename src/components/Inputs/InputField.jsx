@@ -1,7 +1,7 @@
 import React, { useState, forwardRef } from 'react';
 import validator from 'validator';
 
-const Input = forwardRef(({ onInputChange, identity, type, label, name, example}, ref) => {
+const Input = forwardRef(({ onInputChange, identity, type, label, name, example, isEmailValid}, ref) => {
   const [isValid, setEmail] = useState(true);
 
   const handleChange = (event) => {
@@ -28,13 +28,9 @@ const Input = forwardRef(({ onInputChange, identity, type, label, name, example}
         required
         />
 
-      {name === 'email' ? (
-        isValid ? (
-          <p></p>
-        ) : (
-          <p>Preencha com um email válido</p>
-        )
-      ) : null}
+     
+      {isEmailValid ? <p>{isEmailValid}</p> : null}
+      {name === 'email' ? isValid ? <p></p> : <p>Preencha com um email válido</p> : null}
     </div>
   );
 });

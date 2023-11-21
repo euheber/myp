@@ -17,39 +17,29 @@ function register() {
   })
 
   const [validEmail, setEmail] = useState('')
-
+  const [ exist, setExist] = useState('')
   const handleInputChange = (event, objectId) => {
-
-    if(objectId){
-      setUser({
-        ...user,
-        [objectId]: event.target.value,
-      })
-      return
-    }
+    const targetKey = objectId !== undefined ? objectId : event.target.name;
     setUser({
       ...user,
-      [event.target.name]: event.target.value,
-    })
-
-    
-  }
+      [targetKey]: event.target.value,
+    });
+  };
 
   const registerUser = async (event) => { 
     event.preventDefault()
  
         const request = await fetch("http://localhost:3000/user", {
           method: 'POST',
-          headers: { 
-            'Content-type': 'application/json'
-          },
+          headers: {'Content-type': 'application/json'},
           body: JSON.stringify(user)
         })
        
         if(!request.ok){
           const errorMsg = await request.json()
-          console.log(request);
-          console.log(errorMsg.error);
+          inputRef.current.focus
+          setExist(`${errorMsg.error}`)
+          setTimeout(()=> setExist(""), 4000)
         }
   }
 
@@ -58,7 +48,7 @@ function register() {
       <h1 className="font-lorat text-xl">
         Cadastre a ONG para ter acesso a nossas ferramentas
       </h1>
-
+      
       <form className="mt-10 flex flex-col gap-5">
         <details className="border space-y-5">
           <summary className="cursor-pointer">Sobre a ong</summary>
@@ -102,7 +92,7 @@ function register() {
             <label>Estado/Cidade</label>
             <select onChange={(event => handleInputChange(event, 'state') )}>
       
-            < OptionField defaultInfo={'sp'} content={"Selecione"} />
+            < OptionField defaultInfo={''} content={"Selecione"} />
             < OptionField value={'sp'} content={"São Paulo"} />
             < OptionField value={'mg'} content={"Minas"} />
             </select>
@@ -135,6 +125,7 @@ function register() {
             label={"Email"}
             name={"email"}
             example={"meuemail@email.com"}
+            isEmailValid={exist}
             ref={inputRef}
           />
           
