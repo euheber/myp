@@ -14,7 +14,7 @@ const Input = forwardRef(({ onInputChange, identity, type, label, name, example,
 
   return (
     <div className="mt-2">
-      <label htmlFor={identity} className="block">
+      <label htmlFor={identity}  className="block">
         {label}
       </label>
       <input

@@ -1,23 +1,19 @@
 import { useState, useRef } from "react"
 import InputField from "../components/Inputs/InputField"
 import OptionField from "../components/Inputs/OptionField"
+import Button from "../components/composables/button"
+import { useNavigate } from "react-router-dom"
 
 
 function register() {
-  const inputRef = useRef(null)
-  const [user, setUser] = useState({
-    ongname: "",
-    neighborhood: "",
-    street: "",
-    number: "",
-    name: "",
-    email: "",
-    password: "",
-    state: "",
-  })
-
   const [validEmail, setEmail] = useState('')
   const [ exist, setExist] = useState('')
+  const navigate = useNavigate()
+  const inputRef = useRef(null)
+  const [user, setUser] = useState({ongname: "", neighborhood: "", street: "", number: "", name: "", email: "", password: "",state:""})
+
+ 
+
   const handleInputChange = (event, objectId) => {
     const targetKey = objectId !== undefined ? objectId : event.target.name;
     setUser({
@@ -26,21 +22,24 @@ function register() {
     });
   };
 
-  const registerUser = async (event) => { 
+  const registerUser = async (event) => {
     event.preventDefault()
- 
-        const request = await fetch("http://localhost:3000/user", {
+
+    const request = await fetch("http://localhost:3000/user", {
           method: 'POST',
           headers: {'Content-type': 'application/json'},
           body: JSON.stringify(user)
         })
-       
-        if(!request.ok){
+      
+    if(!request.ok){
           const errorMsg = await request.json()
           inputRef.current.focus
           setExist(`${errorMsg.error}`)
           setTimeout(()=> setExist(""), 4000)
-        }
+          return
+      }
+
+      navigate("/login")
   }
 
   return (
@@ -49,7 +48,7 @@ function register() {
         Cadastre a ONG para ter acesso a nossas ferramentas
       </h1>
       
-      <form className="mt-10 flex flex-col gap-5">
+      <form className="mt-10 flex flex-col gap-5" id="ong" name="ong">
         <details className="border space-y-5">
           <summary className="cursor-pointer">Sobre a ong</summary>
           <InputField
@@ -131,7 +130,7 @@ function register() {
           
           <InputField
             onInputChange={handleInputChange}
-            type={"text"}
+            type={"password"}
             identity={"password"}
             label={"Senha"}
             name={"password"}
@@ -139,9 +138,9 @@ function register() {
           />
         </details>   
 
-        <button className="border border-black p-4 w-40 rounded-md mx-auto cursor-pointer hover:text-freesia transition duration-150" onClick={registerUser}>
+        <Button action={registerUser} styles={"border border-black p-4 w-40 rounded-md mx-auto cursor-pointer hover:text-freesia transition duration-150"}>
           Cadastrar
-        </button>
+        </Button>
       </form>
 
  
