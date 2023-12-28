@@ -1,6 +1,6 @@
-function option({value, content, defaultInfo}){
+function option({value, content, identifier}){
     return (
-            <option value={value} defaultValue={defaultInfo}>{content}</option>
+            <option value={value} className={identifier}>{content} </option>
     )
 }
 
