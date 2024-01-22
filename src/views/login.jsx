@@ -1,6 +1,6 @@
 import { useState } from "react"
 import InputField from "../components/Inputs/InputField"
-import Button from "../components/composables/button"
+import Button from "../components/composables/Button"
 import { useNavigate } from "react-router-dom"
 
 function Login() {
