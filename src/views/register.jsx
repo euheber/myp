@@ -1,6 +1,6 @@
 import InputField from "../components/Inputs/InputField"
 import OptionField from "../components/Inputs/OptionField"
-import Button from "../components/composables/Button"
+import ButtonComposable from "../components/composables/Button"
 import { useState, useRef } from "react"
 import { useNavigate } from "react-router-dom"
 
@@ -173,14 +173,14 @@ function Register() {
           />
         </details>
 
-        <Button
+        <ButtonComposable
           action={registerUser}
           styles={
             "border border-black p-4 w-40 rounded-md mx-auto cursor-pointer hover:text-freesia transition duration-150"
           }
         >
           Cadastrar
-        </Button>
+        </ButtonComposable>
       </form>
     </main>
   )
