@@ -1,10 +1,10 @@
-import { useState, useRef } from "react"
-import { useNavigate } from "react-router-dom"
 import InputField from "../components/Inputs/InputField"
 import OptionField from "../components/Inputs/OptionField"
-import Button from "../components/composables/button"
+import Button from "../components/composables/Button"
+import { useState, useRef } from "react"
+import { useNavigate } from "react-router-dom"
 
-function register() {
+function Register() {
   const [user, setUser] = useState({
     ongname: "",
     neighborhood: "",
@@ -67,7 +67,7 @@ function register() {
   return (
     <main className="mt-10 px-5 pb-2">
       <h1 className="font-lorat text-xl">
-        Cadastre a ONG para ter acesso a nossas ferramentas
+      Cadastre a ONG para ter acesso a nossas ferramentas
       </h1>
 
       <form className="mt-10 flex flex-col gap-5" id="ong" name="ong">
@@ -186,4 +186,4 @@ function register() {
   )
 }
 
-export default register
+export default Register

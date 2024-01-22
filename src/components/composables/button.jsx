@@ -1,6 +1,4 @@
-import { Children } from "react";
-
-function button({children, styles, action}){ 
+function Button({children, styles, action}){ 
 return(
     <button className={styles} onClick={action}> 
         {children}
@@ -9,4 +7,4 @@ return(
 }
 
 
-export default button
+export default Button

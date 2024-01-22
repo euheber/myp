@@ -3,7 +3,7 @@ import InputField from "../components/Inputs/InputField"
 import Button from "../components/composables/button"
 import { useNavigate } from "react-router-dom"
 
-function login() {
+function Login() {
   const navigate = useNavigate()
   const [user, setUser] = useState({ email: "", password: "" })
 
@@ -13,18 +13,23 @@ function login() {
 
   const logIn = async (event) => {
     event.preventDefault()
-    const request = await fetch("http://localhost:3000/login", {
-      method: "POST",
-      headers: { "Content-type": "application/json" },
-      body: JSON.stringify(user),
-    })
+    try {
+      const request = await fetch("http://localhost:3000/login", {
+        method: "POST",
+        headers:  { "Content-type": "application/json" },
+        body: JSON.stringify(user)
+      })
 
-    if (request.ok) {
-      const data = await request.json()
-      localStorage.setItem("token", data.token)
-      navigate("/")
-    }
+      if (request.ok) {
+        const data = await request.json()
+        localStorage.setItem("token", data.token)
+        navigate("/")
+      }
+    } catch (error) {
+      console.error('Erro na solicitação POST:', error);
+    } 
   }
+
   return (
     <>
       <main className="mt-10 px-5 pb-2">
@@ -62,4 +67,4 @@ function login() {
   )
 }
 
-export default login
+export default Login

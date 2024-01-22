@@ -1,5 +1,5 @@
 import ArrowDown from "../assets/icons/arrowdown"
-function root(){ 
+function Root(){ 
     return (
         <>
          <section className=" mx-auto max-w-4xl mt-10 min-h-[400px] flex items-center px-5">
@@ -52,4 +52,4 @@ function root(){
 }
 
 
-export default root
+export default Root
