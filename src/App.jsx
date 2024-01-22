@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router-dom"
 import Header from "./components/headerComponent/Header"
 import Footer from "./components/footerComponent/Footer"
-import Root from "./views/Root"
+import Root from "./views/Root.jsx"
 import Login from "./views/Login"
 import Register from "./views/Register"
 
