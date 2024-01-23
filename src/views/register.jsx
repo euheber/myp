@@ -1,6 +1,6 @@
 import InputField from "../components/Inputs/InputField"
 import OptionField from "../components/Inputs/OptionField"
-import ButtonComposable from "../components/composables/button"
+import ButtonComposable from "../components/composables/Button"
 import { useState, useRef } from "react"
 import { useNavigate } from "react-router-dom"
 
